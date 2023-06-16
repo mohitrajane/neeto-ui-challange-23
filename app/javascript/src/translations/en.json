@@ -1,0 +1,12 @@
+{
+  "common": {
+    "emptyState": {
+      "addEntity": "Add new {{entity}}",
+      "description": "Add your {{entity}} to send customized emails to them",
+      "message": "Looks like you don't have any {{entity}}"
+    },
+    "noSearchResults": "No Search results found",
+    "edit": "Edit",
+    "delete": "Delete"
+  }
+}

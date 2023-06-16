@@ -10,17 +10,46 @@ export const NOTES_FORM_VALIDATION_SCHEMA = yup.object().shape({
   description: yup.string().required("Description is required"),
 });
 
-export const NOTES_TABLE_COLUMN_DATA = [
+export const DUMMY_NOTES = [
   {
-    title: "Title",
-    dataIndex: "title",
-    key: "title",
-    width: "30%",
+    id: crypto.randomUUID(),
+    title: "How to grow Potatos",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores libero expedita eum nobis exercitationem quaerat quibusdam iusto voluptates.",
+    tags: ["Getting Started"],
+    status: "created",
+    updatedAt: "2023-06-15T18:48:47.761Z",
   },
   {
-    title: "Description",
-    dataIndex: "description",
-    key: "description",
-    width: "70%",
+    id: crypto.randomUUID(),
+    title: "How to grow Carrots",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores libero expedita eum nobis exercitationem quaerat quibusdam iusto voluptates.",
+    tags: ["Getting Started"],
+    status: "drafted",
+    updatedAt: "2023-06-15T18:48:47.761Z",
+  },
+  {
+    id: crypto.randomUUID(),
+    title: "How to grow Bananas",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum dolores libero expedita eum nobis exercitationem quaerat quibusdam iusto voluptates.",
+    tags: ["Getting Started", "farming"],
+    status: "drafted",
+    updatedAt: "2023-06-15T18:48:47.761Z",
+  },
+  {
+    id: crypto.randomUUID(),
+    title: "How to grow mangos",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit.Laborum dolores libero expedita eum nobis exercitationem quaerat quibusdam iusto voluptates.",
+    tags: ["Getting Started"],
+    status: "created",
+    updatedAt: "2023-06-15T18:48:47.761Z",
   },
 ];
+
+export const DUMMY_USER = {
+  name: "Oliver Smith",
+  imageUrl: "https://randomuser.me/api/portraits/women/90.jpg",
+};
