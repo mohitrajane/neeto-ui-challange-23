@@ -1,41 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Delete } from "neetoicons";
 import { Button, PageLoader } from "neetoui";
-import { Container, Header, SubHeader } from "neetoui/layouts";
+import { Container, Header } from "neetoui/layouts";
+import { useTranslation } from "react-i18next";
 
-import notesApi from "apis/notes";
 import EmptyState from "components/commons/EmptyState";
 
+import Card from "./Card";
+import { DUMMY_NOTES } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./Pane/Create";
-import Table from "./Table";
 
 const Notes = () => {
-  const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(false);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNoteIds, setSelectedNoteIds] = useState([]);
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(DUMMY_NOTES);
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  const { t } = useTranslation();
 
-  const fetchNotes = async () => {
-    try {
-      setLoading(true);
-      const {
-        data: { notes },
-      } = await notesApi.fetch();
-      setNotes(notes);
-    } catch (error) {
-      logger.error(error);
-    } finally {
-      setLoading(false);
-    }
+  const handleSearch = e => {
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+    const filteredNotes = DUMMY_NOTES.filter(note =>
+      note.title.toLowerCase().includes(searchTerm.trim().toLowerCase())
+    );
+    setNotes(filteredNotes);
+  };
+
+  const handleDelete = id => {
+    logger.info(id);
+  };
+
+  const handleEdit = id => {
+    logger.info(id);
   };
 
   if (loading) {
@@ -45,6 +47,7 @@ const Notes = () => {
   return (
     <Container>
       <Header
+        className="mb-6"
         title="Notes"
         actionBlock={
           <Button
@@ -56,46 +59,46 @@ const Notes = () => {
         }
         searchProps={{
           value: searchTerm,
-          onChange: e => setSearchTerm(e.target.value),
+          onChange: handleSearch,
         }}
       />
       {notes.length ? (
         <>
-          <SubHeader
-            rightActionBlock={
-              <Button
-                disabled={!selectedNoteIds.length}
-                icon={Delete}
-                label="Delete"
-                size="small"
-                onClick={() => setShowDeleteAlert(true)}
-              />
-            }
-          />
-          <Table
-            fetchNotes={fetchNotes}
-            notes={notes}
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-          />
+          {notes.map(note => (
+            <Card
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+              key={note.id}
+              note={note}
+            />
+          ))}
         </>
       ) : (
         <EmptyState
           image={EmptyNotesListImage}
           primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add new note"
-          subtitle="Add your notes to send customized emails to them."
-          title="Looks like you don't have any notes!"
+          primaryActionLabel={t("common.emptyState.addEntity", {
+            entity: "Note",
+          })}
+          subtitle={
+            !searchTerm &&
+            t("common.emptyState.description", { entity: "notes" })
+          }
+          title={
+            searchTerm
+              ? t("common.noSearchResults")
+              : t("common.emptyState.message", { entity: "notes" })
+          }
         />
       )}
       <NewNotePane
-        fetchNotes={fetchNotes}
+        // fetchNotes={fetchNotes}
         setShowPane={setShowNewNotePane}
         showPane={showNewNotePane}
       />
       {showDeleteAlert && (
         <DeleteAlert
-          refetch={fetchNotes}
+          // refetch={fetchNotes}
           selectedNoteIds={selectedNoteIds}
           setSelectedNoteIds={setSelectedNoteIds}
           onClose={() => setShowDeleteAlert(false)}
