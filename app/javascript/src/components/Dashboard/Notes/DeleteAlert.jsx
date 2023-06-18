@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Alert } from "neetoui";
+import { Alert, Toastr } from "neetoui";
 import { useTranslation } from "react-i18next";
 
 const DeleteAlert = ({
@@ -18,6 +18,7 @@ const DeleteAlert = ({
     setDeleting(true);
     setNotes(notes.filter(note => note.id !== selectedNoteId));
     onClose();
+    Toastr.success(t("note.deleteSuccess"));
     setSelectedNoteId("");
     setDeleting(false);
   };

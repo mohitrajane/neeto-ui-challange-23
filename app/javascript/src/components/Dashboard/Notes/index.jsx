@@ -83,12 +83,12 @@ const Notes = () => {
           })}
           subtitle={
             !searchTerm &&
-            t("common.emptyState.description", { entity: "notes" })
+            t("common.emptyState.description", { entity: t("notes.note") })
           }
           title={
             searchTerm
               ? t("common.noSearchResults")
-              : t("common.emptyState.message", { entity: "notes" })
+              : t("common.emptyState.message", { entity: t("notes.note") })
           }
         />
       )}
