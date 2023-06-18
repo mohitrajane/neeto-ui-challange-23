@@ -1,38 +1,33 @@
 import React, { useState } from "react";
 
 import { Alert } from "neetoui";
-
-import notesApi from "apis/notes";
+import { useTranslation } from "react-i18next";
 
 const DeleteAlert = ({
-  refetch,
   onClose,
-  selectedNoteIds,
-  setSelectedNoteIds,
+  selectedNoteId,
+  setSelectedNoteId,
+  setNotes,
+  notes,
 }) => {
   const [deleting, setDeleting] = useState(false);
 
-  const handleDelete = async () => {
-    try {
-      setDeleting(true);
-      await notesApi.destroy({ ids: selectedNoteIds });
-      onClose();
-      setSelectedNoteIds([]);
-      refetch();
-    } catch (error) {
-      logger.error(error);
-      setDeleting(false);
-    }
+  const { t } = useTranslation();
+
+  const handleDelete = () => {
+    setDeleting(true);
+    setNotes(notes.filter(note => note.id !== selectedNoteId));
+    onClose();
+    setSelectedNoteId("");
+    setDeleting(false);
   };
 
   return (
     <Alert
       isOpen
       isSubmitting={deleting}
-      message="Are you sure you want to continue? This cannot be undone."
-      title={`Delete ${selectedNoteIds.length} ${
-        selectedNoteIds.length > 1 ? "notes" : "note"
-      }?`}
+      message={t("notes.deleteDescription")}
+      title={t("notes.deleteTitle")}
       onClose={onClose}
       onSubmit={handleDelete}
     />
