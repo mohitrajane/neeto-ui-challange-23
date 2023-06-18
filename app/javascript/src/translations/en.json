@@ -8,5 +8,11 @@
     "noSearchResults": "No Search results found",
     "edit": "Edit",
     "delete": "Delete"
+  },
+  "notes": {
+    "note": "Note",
+    "deleteTitle": "Delete Note",
+    "deleteDescription": "Are you sure you want to continue? This cannot be undone.",
+    "deleteSuccess": "Note deleted successfully."
   }
 }

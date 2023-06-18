@@ -18,7 +18,7 @@ const Notes = () => {
   const [showNewNotePane, setShowNewNotePane] = useState(false);
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState("");
   const [notes, setNotes] = useState(DUMMY_NOTES);
 
   const { t } = useTranslation();
@@ -33,7 +33,8 @@ const Notes = () => {
   };
 
   const handleDelete = id => {
-    logger.info(id);
+    setShowDeleteAlert(true);
+    setSelectedNoteId(id);
   };
 
   const handleEdit = id => {
@@ -82,12 +83,12 @@ const Notes = () => {
           })}
           subtitle={
             !searchTerm &&
-            t("common.emptyState.description", { entity: "notes" })
+            t("common.emptyState.description", { entity: t("notes.note") })
           }
           title={
             searchTerm
               ? t("common.noSearchResults")
-              : t("common.emptyState.message", { entity: "notes" })
+              : t("common.emptyState.message", { entity: t("notes.note") })
           }
         />
       )}
@@ -98,9 +99,10 @@ const Notes = () => {
       />
       {showDeleteAlert && (
         <DeleteAlert
-          // refetch={fetchNotes}
-          selectedNoteIds={selectedNoteIds}
-          setSelectedNoteIds={setSelectedNoteIds}
+          notes={DUMMY_NOTES}
+          selectedNoteId={selectedNoteId}
+          setNotes={setNotes}
+          setSelectedNoteId={setSelectedNoteId}
           onClose={() => setShowDeleteAlert(false)}
         />
       )}
