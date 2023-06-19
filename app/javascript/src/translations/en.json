@@ -30,5 +30,13 @@
       "assignedContact": "Assigned Contact",
       "tags": "Tags"
     }
+  },
+  "contacts": {
+    "contacts": "Contacts",
+    "table": {
+      "name": "Name & Role",
+      "email": "Email",
+      "createdAt": "Created At"
+    }
   }
 }
