@@ -4,7 +4,7 @@ import { Header, Container } from "@bigbinary/neetoui/layouts";
 import { Button, Table } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-import { DUMMY_CONTACTS } from "components/Dashboard/Notes/constants";
+import { DUMMY_CONTACTS } from "components/constants";
 
 import NewContactPane from "./Pane";
 import { buildContactTableColumn } from "./utils";

@@ -6,9 +6,9 @@ import { Container, Header } from "neetoui/layouts";
 import { useTranslation } from "react-i18next";
 
 import EmptyState from "components/commons/EmptyState";
+import { DUMMY_NOTES } from "components/constants";
 
 import Card from "./Card";
-import { DUMMY_NOTES } from "./constants";
 import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./Pane/Create";
 

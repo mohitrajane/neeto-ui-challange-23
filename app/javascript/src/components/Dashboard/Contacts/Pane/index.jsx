@@ -5,7 +5,7 @@ import { Button, Pane as NeetoUIPane, Typography, Toastr } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
 
-import { DUMMY_ROLES } from "components/Dashboard/Notes/constants";
+import { DUMMY_ROLES } from "components/constants";
 
 import {
   CONTACTS_FORM_INITIAL_FORM_VALUES,
@@ -24,7 +24,7 @@ const Pane = ({ showPane, setShowPane, setContacts }) => {
       role: role.value,
     };
     setContacts(previousContacts => [...previousContacts, newContact]);
-    Toastr.success(t());
+    Toastr.success(t("contacts.createSuccess"));
     onClose();
   };
 
