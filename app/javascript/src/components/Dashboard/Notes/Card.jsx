@@ -6,17 +6,17 @@ import { useTranslation } from "react-i18next";
 
 import { calculateTimePassed, getDayTime } from "utils/dateTime";
 
-import { DUMMY_USER } from "./constants";
+import { DUMMY_CONTACTS } from "./constants";
 
 const Card = ({
-  note: { id, title, description, tags, status, updatedAt },
+  note: { id, title, description, tags, status, updatedAt, assignedContact },
   handleEdit,
   handleDelete,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="neeto-ui-shadow-s mb-4 rounded border border-gray-300 p-4">
+    <div className="neeto-ui-shadow-s mb-4 w-full rounded border border-gray-300 p-4">
       <div className=" flex">
         <Typography className="mr-auto" style="h4">
           {title}
@@ -39,7 +39,7 @@ const Card = ({
       <div className="flex">
         <div className="space-x-2">
           {tags?.map(tag => (
-            <Tag key={tag} label={tag} />
+            <Tag key={tag.id} label={tag.name} />
           ))}
         </div>
         <Tooltip content={getDayTime(updatedAt)} position="bottom">
@@ -51,7 +51,14 @@ const Card = ({
             <Typography style="body3">
               {calculateTimePassed(updatedAt)}
             </Typography>
-            <Avatar size="small" user={DUMMY_USER} />
+            <Avatar
+              size="small"
+              user={
+                DUMMY_CONTACTS.filter(
+                  contact => contact.id === assignedContact
+                )[0]
+              }
+            />
           </div>
         </Tooltip>
       </div>

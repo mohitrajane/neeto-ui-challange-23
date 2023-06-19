@@ -7,12 +7,28 @@
     },
     "noSearchResults": "No Search results found",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "update": "Update",
+    "saveChanges": "Save Changes",
+    "cancel": "Cancel",
+    "form": {
+      "validation": {
+        "required": "{{field}} is required"
+      }
+    }
   },
   "notes": {
     "note": "Note",
     "deleteTitle": "Delete Note",
     "deleteDescription": "Are you sure you want to continue? This cannot be undone.",
-    "deleteSuccess": "Note deleted successfully."
+    "deleteSuccess": "Note deleted successfully.",
+    "createTitle": "Add New Note",
+    "createSuccess": "Note created successfully",
+    "fields": {
+      "title": "Title",
+      "description": "Description",
+      "assignedContact": "Assigned Contact",
+      "tags": "Tags"
+    }
   }
 }
