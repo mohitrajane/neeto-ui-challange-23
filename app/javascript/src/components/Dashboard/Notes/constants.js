@@ -50,7 +50,7 @@ export const DUMMY_CONTACTS = [
     name: "Oliver Smith",
     imageUrl: "https://randomuser.me/api/portraits/women/90.jpg",
     email: "oliver.s@example.com",
-    createdAt: "",
+    createdAt: "2023-06-15T18:48:47.761Z",
   },
   {
     id: "2",
