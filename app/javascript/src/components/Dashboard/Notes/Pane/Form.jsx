@@ -5,9 +5,9 @@ import { Button, Pane, Toastr } from "neetoui";
 import { Input, Select } from "neetoui/formik";
 import { useTranslation } from "react-i18next";
 
-import { NOTES_FORM_VALIDATION_SCHEMA } from "./constants";
+import { DUMMY_CONTACTS, DUMMY_TAGS } from "components/constants";
 
-import { DUMMY_CONTACTS, DUMMY_TAGS } from "../constants";
+import { NOTES_FORM_VALIDATION_SCHEMA } from "./constants";
 
 const Form = ({ onClose, note, isEdit, setNotes }) => {
   const { t } = useTranslation();

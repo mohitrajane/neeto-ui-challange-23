@@ -37,6 +37,13 @@
       "name": "Name & Role",
       "email": "Email",
       "createdAt": "Created At"
+    },
+    "createSuccess": "Contact created successfully",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "LastName",
+      "email": "Email",
+      "role": "Role"
     }
   }
 }

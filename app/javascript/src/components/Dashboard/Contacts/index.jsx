@@ -4,14 +4,14 @@ import { Header, Container } from "@bigbinary/neetoui/layouts";
 import { Button, Table } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-import { DUMMY_CONTACTS } from "components/Dashboard/Notes/constants";
+import { DUMMY_CONTACTS } from "components/constants";
 
+import NewContactPane from "./Pane";
 import { buildContactTableColumn } from "./utils";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState(DUMMY_CONTACTS);
   const [searchTerm, setSearchTerm] = useState("");
-  // eslint-disable-next-line no-unused-vars
   const [showNewContactPane, setShowNewContactPane] = useState(false);
 
   const { t } = useTranslation();
@@ -57,6 +57,11 @@ const Contacts = () => {
         rowSelection
         columnData={buildContactTableColumn()}
         rowData={contacts}
+      />
+      <NewContactPane
+        setContacts={setContacts}
+        setShowPane={setShowNewContactPane}
+        showPane={showNewContactPane}
       />
     </Container>
   );

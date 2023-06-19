@@ -4,9 +4,8 @@ import { Avatar, Dropdown, Tag, Tooltip, Typography } from "@bigbinary/neetoui";
 import { Clock, MenuVertical } from "neetoicons";
 import { useTranslation } from "react-i18next";
 
+import { DUMMY_CONTACTS } from "components/constants";
 import { calculateTimePassed, getDayTime } from "utils/dateTime";
-
-import { DUMMY_CONTACTS } from "./constants";
 
 const Card = ({
   note: { id, title, description, tags, status, updatedAt, assignedContact },
