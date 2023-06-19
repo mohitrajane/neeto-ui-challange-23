@@ -6,13 +6,16 @@ import { useTranslation } from "react-i18next";
 
 import { DUMMY_CONTACTS } from "components/constants";
 
+import DeleteAlert from "./DeleteAlert";
 import NewContactPane from "./Pane";
 import { buildContactTableColumn } from "./utils";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState(DUMMY_CONTACTS);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showNewContactPane, setShowNewContactPane] = useState(false);
+  const [isShowNewContactPane, setIsShowNewContactPane] = useState(false);
+  const [isShowDeleteAlert, setIsShowDeleteAlert] = useState(false);
+  const [selectedContactId, setSelectedContactId] = useState("");
 
   const { t } = useTranslation();
 
@@ -34,6 +37,11 @@ const Contacts = () => {
     setContacts(filteredContacts);
   };
 
+  const handleDelete = id => {
+    setIsShowDeleteAlert(true);
+    setSelectedContactId(id);
+  };
+
   return (
     <Container>
       <Header
@@ -44,7 +52,7 @@ const Contacts = () => {
             icon="ri-add-line"
             label="Add new contact"
             size="small"
-            onClick={() => setShowNewContactPane(true)}
+            onClick={() => setIsShowNewContactPane(true)}
           />
         }
         searchProps={{
@@ -55,14 +63,23 @@ const Contacts = () => {
       <Table
         fixedHeight
         rowSelection
-        columnData={buildContactTableColumn()}
+        columnData={buildContactTableColumn(handleDelete)}
         rowData={contacts}
       />
       <NewContactPane
         setContacts={setContacts}
-        setShowPane={setShowNewContactPane}
-        showPane={showNewContactPane}
+        setShowPane={setIsShowNewContactPane}
+        showPane={isShowNewContactPane}
       />
+      {isShowDeleteAlert && (
+        <DeleteAlert
+          contacts={contacts}
+          selectedContactId={selectedContactId}
+          setContacts={setContacts}
+          setSelectedContactId={setSelectedContactId}
+          onClose={() => setIsShowDeleteAlert(false)}
+        />
+      )}
     </Container>
   );
 };

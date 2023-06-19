@@ -19,10 +19,10 @@
   },
   "notes": {
     "note": "Note",
-    "deleteTitle": "Delete Note",
+    "deleteTitle": "Delete note",
     "deleteDescription": "Are you sure you want to continue? This cannot be undone.",
     "deleteSuccess": "Note deleted successfully.",
-    "createTitle": "Add New Note",
+    "createTitle": "Add new note",
     "createSuccess": "Note created successfully",
     "fields": {
       "title": "Title",
@@ -38,12 +38,16 @@
       "email": "Email",
       "createdAt": "Created At"
     },
+    "createTitle": "Add new contact",
     "createSuccess": "Contact created successfully",
     "fields": {
       "firstName": "First Name",
       "lastName": "LastName",
       "email": "Email",
       "role": "Role"
-    }
+    },
+    "deleteTitle": "Delete contact",
+    "deleteDescription": "Are you sure you want to continue? This cannot be undone.",
+    "deleteSuccess": "Contact deleted successfully."
   }
 }
