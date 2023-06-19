@@ -13,26 +13,34 @@ export const CONTACTS_FORM_VALIDATION_SCHEMA = yup.object().shape({
     .string()
     .trim()
     .required(
-      t("form.validation.required", { field: t("contacts.fields.firstName") })
+      t("common.form.validation.required", {
+        field: t("contacts.fields.firstName"),
+      })
     ),
   lastName: yup
     .string()
     .trim()
     .required(
-      t("form.validation.required", { field: t("contacts.fields.lastName") })
+      t("common.form.validation.required", {
+        field: t("contacts.fields.lastName"),
+      })
     ),
   email: yup
     .string()
     .trim()
     .email()
     .required(
-      t("form.validation.required", { field: t("contacts.fields.email") })
+      t("common.form.validation.required", {
+        field: t("contacts.fields.email"),
+      })
     ),
   role: yup
     .object()
     .shape({ label: yup.string(), value: yup.string() })
     .nullable()
     .required(
-      t("form.validation.required", { field: t("contacts.fields.role") })
+      t("common.form.validation.required", {
+        field: t("contacts.fields.role"),
+      })
     ),
 });

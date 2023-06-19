@@ -32,7 +32,7 @@ const Pane = ({ showPane, setShowPane, setContacts }) => {
     <NeetoUIPane isOpen={showPane} size="large" onClose={onClose}>
       <NeetoUIPane.Header>
         <Typography style="h2" weight="semibold">
-          {t("notes.createTitle")}
+          {t("contacts.createTitle")}
         </Typography>
       </NeetoUIPane.Header>
       <Formik
@@ -60,8 +60,8 @@ const Pane = ({ showPane, setShowPane, setContacts }) => {
               <Input
                 required
                 className="w-full flex-grow-0"
-                label="Email Address"
-                name={t("contacts.fields.email")}
+                label={t("contacts.fields.email")}
+                name="email"
               />
               <Select
                 required
