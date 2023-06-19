@@ -86,3 +86,8 @@ export const DUMMY_TAGS = [
   { id: "1", name: "Getting Started" },
   { id: "2", name: "Farming" },
 ];
+
+export const DUMMY_ROLES = [
+  { id: "1", name: "Admin" },
+  { id: "2", name: "User" },
+];

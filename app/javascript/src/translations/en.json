@@ -37,6 +37,12 @@
       "name": "Name & Role",
       "email": "Email",
       "createdAt": "Created At"
+    },
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "LastName",
+      "email": "Email",
+      "role": "Role"
     }
   }
 }
