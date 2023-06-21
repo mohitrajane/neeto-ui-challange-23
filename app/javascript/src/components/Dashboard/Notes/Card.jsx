@@ -52,11 +52,9 @@ const Card = ({
             </Typography>
             <Avatar
               size="small"
-              user={
-                DUMMY_CONTACTS.filter(
-                  contact => contact.id === assignedContact
-                )[0]
-              }
+              user={DUMMY_CONTACTS.find(
+                contact => contact.id === assignedContact
+              )}
             />
           </div>
         </Tooltip>
