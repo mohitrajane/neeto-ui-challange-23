@@ -23,11 +23,10 @@ const Notes = () => {
 
   const { t } = useTranslation();
 
-  const handleSearch = e => {
-    const searchTerm = e.target.value;
-    setSearchTerm(searchTerm);
+  const handleSearch = event => {
+    setSearchTerm(event.target.value);
     const filteredNotes = DUMMY_NOTES.filter(note =>
-      note.title.toLowerCase().includes(searchTerm.trim().toLowerCase())
+      note.title.toLowerCase().includes(event.target.value.trim().toLowerCase())
     );
     setNotes(filteredNotes);
   };
