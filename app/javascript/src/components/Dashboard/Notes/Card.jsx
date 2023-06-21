@@ -5,7 +5,7 @@ import { Clock, MenuVertical } from "neetoicons";
 import { useTranslation } from "react-i18next";
 
 import { DUMMY_CONTACTS } from "components/constants";
-import { calculateTimePassed, getDayTime } from "utils/dateTime";
+import { calculateTimePassed, formatDateAndTime } from "utils/dateTime";
 
 const Card = ({
   note: { id, title, description, tags, status, updatedAt, assignedContact },
@@ -41,7 +41,7 @@ const Card = ({
             <Tag key={tag.id} label={tag.name} />
           ))}
         </div>
-        <Tooltip content={getDayTime(updatedAt)} position="bottom">
+        <Tooltip content={formatDateAndTime(updatedAt)} position="bottom">
           <div className="ml-auto flex items-center gap-2 text-gray-600">
             <Clock size={12} />
             <Typography style="body3" textTransform="capitalize">
@@ -52,11 +52,9 @@ const Card = ({
             </Typography>
             <Avatar
               size="small"
-              user={
-                DUMMY_CONTACTS.filter(
-                  contact => contact.id === assignedContact
-                )[0]
-              }
+              user={DUMMY_CONTACTS.find(
+                contact => contact.id === assignedContact
+              )}
             />
           </div>
         </Tooltip>

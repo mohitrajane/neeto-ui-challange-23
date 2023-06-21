@@ -11,13 +11,13 @@ import NewContactPane from "./Pane";
 import { buildContactTableColumn } from "./utils";
 
 const Contacts = () => {
+  const { t } = useTranslation();
+
   const [contacts, setContacts] = useState(DUMMY_CONTACTS);
   const [searchTerm, setSearchTerm] = useState("");
   const [isShowNewContactPane, setIsShowNewContactPane] = useState(false);
   const [isShowDeleteAlert, setIsShowDeleteAlert] = useState(false);
   const [selectedContactId, setSelectedContactId] = useState("");
-
-  const { t } = useTranslation();
 
   const filterByNameOrEmail = ({ contact: { name, email }, searchTerm }) => {
     const formattedSearchTerm = searchTerm.trim().toLowerCase();

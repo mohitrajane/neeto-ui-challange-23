@@ -13,6 +13,8 @@ import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./Pane/Create";
 
 const Notes = () => {
+  const { t } = useTranslation();
+
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
@@ -21,13 +23,10 @@ const Notes = () => {
   const [selectedNoteId, setSelectedNoteId] = useState("");
   const [notes, setNotes] = useState(DUMMY_NOTES);
 
-  const { t } = useTranslation();
-
-  const handleSearch = e => {
-    const searchTerm = e.target.value;
-    setSearchTerm(searchTerm);
+  const handleSearch = event => {
+    setSearchTerm(event.target.value);
     const filteredNotes = DUMMY_NOTES.filter(note =>
-      note.title.toLowerCase().includes(searchTerm.trim().toLowerCase())
+      note.title.toLowerCase().includes(event.target.value.trim().toLowerCase())
     );
     setNotes(filteredNotes);
   };

@@ -10,9 +10,9 @@ const DeleteAlert = ({
   setContacts,
   contacts,
 }) => {
-  const [deleting, setDeleting] = useState(false);
-
   const { t } = useTranslation();
+
+  const [deleting, setDeleting] = useState(false);
 
   const handleDelete = () => {
     setDeleting(true);
