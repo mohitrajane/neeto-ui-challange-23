@@ -86,6 +86,7 @@ const Pane = ({ showPane, setShowPane, setContacts }) => {
               <Button
                 label={t("common.cancel")}
                 style="text"
+                type="reset"
                 onClick={onClose}
               />
             </NeetoUIPane.Footer>

@@ -78,7 +78,12 @@ const Form = ({ onClose, note, isEdit, setNotes }) => {
               style="primary"
               type="submit"
             />
-            <Button label={t("common.cancel")} style="text" onClick={onClose} />
+            <Button
+              label={t("common.cancel")}
+              style="text"
+              type="reset"
+              onClick={onClose}
+            />
           </Pane.Footer>
         </FormikForm>
       )}
