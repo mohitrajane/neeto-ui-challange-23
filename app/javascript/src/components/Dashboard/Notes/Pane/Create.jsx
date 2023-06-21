@@ -8,6 +8,7 @@ import Form from "./Form";
 
 const Create = ({ showPane, setShowPane, setNotes }) => {
   const { t } = useTranslation();
+
   const onClose = () => setShowPane(false);
 
   return (
